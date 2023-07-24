@@ -27,18 +27,14 @@ int main(void) {
     };
     CharacterDirection player_direction = DOWN;    
     CharacterState player_state = IDLE;
-    
     InitWindow(WIDTH, HEIGHT, "game");
+
     SetTargetFPS(60);
 
     Texture2D player_sheet = LoadTexture("res/sprites/characters/player/player_3x_scale.png");
-    
     float player_frame_width = (float)(player_sheet.width / 24); /*This is the width of a single frame in the spritesheet.
     when drawn this starts at frame 1 since it uses the width of the first frame for reference.
-    To draw a different frame we multiply by its sprite number minus 1.
-    for example: to draw frame 4 =  player_frame_width * 3
-    for example: to draw frame 1 =  player_frame_width - player_frame_width 
-    for convenience there is a defined sprite_code_t type*/
+    To draw a different frame we multiply by its sprite number minus 1.*/
     
     //idle
     spriteframe_t up_idle = player_frame_width * 9;
@@ -65,11 +61,13 @@ int main(void) {
     spriteframe_t right_run2 = player_frame_width * 20;
 
     while (!WindowShouldClose()) {
+        
         if (IsKeyDown(KEY_LEFT_SHIFT)) player_state = RUNNING;
         if (IsKeyReleased(KEY_LEFT_SHIFT)) player_state = IDLE;
         //Stops the player from "roadrunner" sprinting whilst stationary.
         if (IsKeyDown(KEY_LEFT_SHIFT) &&!IsKeyDown(KEY_W) && !IsKeyDown(KEY_S) && !IsKeyDown(KEY_A) && !IsKeyDown(KEY_D)) player_state = IDLE;
 
+        
         if (IsKeyDown(KEY_W) && !IsKeyDown(KEY_LEFT_SHIFT)) {
             player_direction = UP;
             player_state = WALKING;
@@ -87,11 +85,10 @@ int main(void) {
             player_direction = RIGHT;
             player_state = WALKING;
         }
+        BeginDrawing();
 
-        BeginDrawing(); //Draw loop 
-
-        DrawFPS(20,20);
-        ClearBackground(DARKGRAY);
+        DrawFPS(20,20);ClearBackground(DARKGRAY);
+        
         if (player_state == IDLE) {
              printf("player_state == IDLE\n");
             switch (player_direction) {
