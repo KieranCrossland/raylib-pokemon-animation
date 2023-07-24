@@ -1,0 +1,2 @@
+Fix stutter on sprint animation involving framecounter and miliseconds overflowing.
+implement Rectangle hitbox for player
