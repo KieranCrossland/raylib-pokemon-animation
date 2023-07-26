@@ -1,5 +1,5 @@
-#ifndef CUSTOM_TYPES_H
-#define CUSTOM_TYPES_H
+#ifndef TYPEDEFS_H
+#define TYPEDEFS_H
 #endif
 typedef int spriteframe_t; // holds the calculation offset for a specific frame of a sprite sheet. eg frame 5 = (player_frame_width * 4).
 

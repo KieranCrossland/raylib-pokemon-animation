@@ -1,5 +1,5 @@
 #include "raylib.h"
-#include "custom_types.h"
+#include "typedefs.h"
 #include <stdio.h>
 
 #define WIDTH 800
